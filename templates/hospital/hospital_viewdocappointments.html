@@ -1,0 +1,66 @@
+{% extends 'hospital/hospital_dashboard.html' %}
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+{% block hospital %}
+
+<style>
+    .gradient-custom {
+/* fallback for old browsers */
+background: #1e263d;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgb(139, 132, 228), rgb(133, 145, 253))
+}
+</style>
+<section class="breadcrumb_part breadcrumb_bg " style="background-image: url(../static/img/5183184.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px; width: 100%; height: 500px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item" >               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <h3 style=" color: #17a2b8; font-size: 3rem; margin-bottom: 5px; text-align: center;">View Appointments</h3>
+
+  <!-- breadcrumb start-->
+  <br>
+  <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Patient</th>
+        <th scope="col">Doctor</th>
+        <th scope="col">Appointment date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Medical Record</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for data in appointments %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{data.patient.fname}} {{data.patient.lname}}</td>
+        <td>{{data.doctor.fname}} {{data.doctor.lname}}, {{data.doctor.department.department_name}} <br>{{data.doctor.hospital.hospital_name}}</td>
+        <td>{{data.app_date}} </td>
+        <td>{{data.app_status}} </td>
+        <td><a href="/hospital-viewmedicalrecord?appointmentid={{data.id}}">View</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock hospital %}

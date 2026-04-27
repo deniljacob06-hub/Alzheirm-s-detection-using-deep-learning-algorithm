@@ -1,0 +1,106 @@
+{% extends 'patient/patient_dashboard.html' %}
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+{% block patient %}
+<style>
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+</style>
+<section class="breadcrumb_part breadcrumb_bg " style="background-image: url(../static/img/5183184.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px; width: 100%; height: 500px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item" >               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <h3 style=" color: #17a2b8; font-size: 3rem; margin-bottom: 5px; text-align: center;">Card Details</h3>
+
+  <!-- breadcrumb start-->
+  <!-- ================ contact section start ================= -->
+  <section class="h-100 " style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+             
+              <div class="col-xl-12">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase " style="text-align: center;">Card Details</h3>
+                  <form action="" method="post">
+                    {% csrf_token %}
+                  
+  
+                 
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example8">Card number</label>
+
+                    <input type="text" id="form3Example8" pattern="[0-9]+" maxlength="16" required  class="form-control form-control-lg" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example9">CVV</label>
+
+                    <input type="text" id="form3Example9" pattern="[0-9]+" maxlength="3" required  class="form-control form-control-lg" />
+                  </div>
+                  
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+  
+                    <h6 class="mb-0 me-4">Expiry Date: </h6>&nbsp;&nbsp;
+                    <input type="date" id="date" class="form-control form-control-lg" />
+                  </div>
+                  
+                  <div class="form-group mt-3" style="text-align: center;">
+                    <button type="submit" class="button button-contactForm btn_1" style="border-radius: 5px;">Pay</button>
+                    <!-- <a href="/patient-addcarddetails?appointmentid={{appointment.id}}" class="button button-contactForm btn_1" style="border-radius: 5px;">Pay</a> -->
+
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var eventDateInput = document.getElementById('date'); // Corrected ID
+        var today = new Date().toISOString().split('T')[0];
+        eventDateInput.setAttribute('min', today);
+
+        var form = document.querySelector('.contact-form');
+        form.addEventListener('submit', function(event) {
+            var selectedDate = new Date(eventDateInput.value);
+            var currentDate = new Date();
+
+            // Set current date to start of day
+            currentDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate < currentDate) {
+                alert("Date must be greater than today's date.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>
+{% endblock patient %}

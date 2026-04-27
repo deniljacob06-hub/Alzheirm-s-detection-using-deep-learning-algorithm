@@ -1,0 +1,253 @@
+{% extends 'doctor/doctor_dashboard.html' %}
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+{% block doctor %}
+<style>
+    body{
+    /* background: #f6f9fc; */
+    margin-top:20px;}
+/* booking */
+
+.bg-light-blue {
+    background-color: #e9f7fe !important;
+    color: #3184ae;
+    padding: 7px 18px;
+    border-radius: 4px;
+}
+
+.bg-light-green {
+    background-color: rgba(40, 167, 69, 0.2) !important;
+    padding: 7px 18px;
+    border-radius: 4px;
+    color: #28a745 !important;
+}
+
+.buttons-to-right {
+    position: absolute;
+    right: 0;
+    top: 40%;
+}
+
+.btn-gray {
+    color: #666;
+    background-color: #eee;
+    padding: 7px 18px;
+    border-radius: 4px;
+}
+
+.booking:hover .buttons-to-right .btn-gray {
+    opacity: 1;
+    transition: .3s;
+}
+
+.buttons-to-right .btn-gray {
+    opacity: 0;
+    transition: .3s;
+}
+
+.btn-gray:hover {
+    background-color: #36a3f5;
+    color: #fff;
+}
+
+.booking {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 30px;
+}
+
+.booking:last-child {
+    margin-bottom: 0px;
+    border-bottom: none;
+    padding-bottom: 0px;
+}
+
+@media screen and (max-width: 575px) {
+    .buttons-to-right {
+        top: 10%;
+    }
+    .buttons-to-right a {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .buttons-to-right a:last-child {
+        margin-bottom: 0px;
+    }
+    .bg-light-blue,
+    .bg-light-green,
+    .btn-gray {
+        padding: 7px;
+    }
+}
+
+.card {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    box-shadow: none;
+    border: none;
+    padding: 25px;
+}
+.mb-5, .my-5 {
+    margin-bottom: 3rem!important;
+}
+.msg-img {
+    margin-right: 20px;
+}
+.msg-img img {
+    width: 60px;
+    border-radius: 50%;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+</style>
+{% if message %}
+<script>
+alert('{{message}}')
+</script>
+{% endif %}
+<section class="breadcrumb_part breadcrumb_bg " style="background-image: url(../static/img/5183184.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px; width: 100%; height: 500px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item" >               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <h3 style=" color: #17a2b8; font-size: 3rem; margin-bottom: 5px; text-align: center;">View Appointments</h3>
+  <!-- breadcrumb start-->
+  <br>
+<div class="container">
+    <div class="row">
+        <form action="" method="post">
+            {% csrf_token %}
+                <input type="date" name="ddate" id="">
+                <button type="submit" class="button button-contactForm btn_1" style="border-radius: 5px; height: 40px;">Filter</button>&nbsp;&nbsp;
+                <a href="/doctor-viewappointments" class="button button-contactForm btn_1" style="border-radius: 5px; height: 40px;">All</a>
+
+            </form>    
+    </div>
+</div>
+  <!-- ================ contact section start ================= -->
+
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-white mb-5">
+                <div class="card-heading clearfix border-bottom mb-4">
+                    <h4 class="card-title">Booking list for {{app_date}}</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        {% for appointment in appointments %}
+                        <li class="position-relative booking">
+                            <div class="media">
+                                <!-- <div class="msg-img">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="">
+                                </div> -->
+                                <div class="media-body">
+                                    <h5 class="mb-4">{{appointment.patient.fname}} {{appointment.patient.lname}}
+                                        {% if appointment.app_status == "Pending" %}
+                                        <span class="badge badge-primary mx-3">Pending</span>
+                                        {% elif appointment.app_status == "Approve" %}
+                                        <span class="badge badge-warning">Approve</span>
+                                        {% elif appointment.app_status == "Reject" %}
+                                        <span class="badge badge-danger">Reject</span>
+                                        {% elif appointment.app_status == "Not Visited" %}
+                                        <span class="badge badge-danger">Not Visited</span>
+                                        {% elif appointment.app_status == "Visited" %}
+                                        <span class="badge badge-success ml-3">Visited</span>
+                                        {% elif appointment.app_status == "Prescription added" %}
+                                        <span class="badge badge-success ml-3">Prescription added</span>
+                                        {% elif appointment.app_status == "Cancel" %}
+                                        <span class="badge badge-danger">Cancel</span>
+                                        {% elif appointment.app_status == "Confirm" %}
+                                        <span class="badge badge-success ml-3">Confirm</span>
+                                        {% endif %}
+                                    </h5>
+                                    <div class="mb-3">
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Booked On:</span>
+                                        <span class="bg-light-blue">{{appointment.booked_on}}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Visiting Time:</span>
+                                        <span class="bg-light-blue">{{appointment.app_time}}</span>
+                                    </div>
+                                  
+                                    <div class="mb-3">
+                                        <span class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Basic Info:</span>
+                                        <span class="border-right pr-2 mr-2">{{appointment.patient.age}} Years</span>
+                                        <span class="border-right pr-2 mr-2"> {{appointment.patient.email}}</span>
+                                        <span>{{appointment.patient.phone}}</span>
+                                    </div>
+                                    {% if appointment.paid_on %}
+                                    <div class="mb-3">
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Payment on:</span>
+                                        <span class="bg-light-blue">{{appointment.paid_on}}</span>
+                                    </div>
+                                    {% endif %}
+                                    {% if appointment.paytype %}
+                                    <div class="mb-3">
+                                        <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Payment type:</span>
+                                        <span class="bg-light-blue">{{appointment.paytype}}</span>
+                                    </div>
+                                    {% endif %}
+                                    <a href="/doctor-viewmedicalrecord?appointmentid={{appointment.id}}" class="btn-gray">Medical Record</a>
+                                </div>
+                            </div>
+                            <div class="buttons-to-right">
+                                {% if appointment.app_status == "Pending" %}
+                                <a href="/doctor-rejectappointment?appointmentid={{appointment.id}}" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Reject</a>
+                                <a href="/doctor-approveappointment?appointmentid={{appointment.id}}" class="btn-gray"><i class="far fa-check-circle mr-2"></i> Approve</a>
+                                {% elif appointment.app_status == "Approve" %}
+                                <p>Payment action Pending from user</p>
+                                {% elif appointment.app_status == "Reject" %}
+                                <p>Rejected by you</p>
+                                {% elif appointment.app_status == "Cancel" %}
+                                <p>Cancelled by user</p>
+                                {% elif appointment.app_status == "Confirm" %}
+                                {% if app_date == today %}
+                                <a href="/doctor-markstatus?appointmentid={{appointment.id}}&status=Visited" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i> Visited</a>
+                                <a href="/doctor-markstatus?appointmentid={{appointment.id}}&status=Not Visited" class="btn-gray"><i class="far fa-check-circle mr-2"></i> Not Visited</a>
+                                {% else %}
+                                <p>Confirmed</p>
+                                {% endif %}
+                                {% elif appointment.app_status == "Not Visited" %}
+                                <p>Patient not visited</p>
+                                {% elif appointment.app_status == "Visited" %}
+                                <a href="/doctor-addmedical?appointmentid={{appointment.id}}" class="btn-gray mr-2"><i class="far fa-times-circle mr-2"></i>Add Prescription</a>
+                                {% elif appointment.app_status == "Prescription added" %}
+                                <p>Prescription added</p>
+                                {% endif %}
+                                
+                            </div>
+                        </li>
+    
+
+                        {% endfor %}
+                    </ul>
+    
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    </div>
+    
+{% endblock doctor %}

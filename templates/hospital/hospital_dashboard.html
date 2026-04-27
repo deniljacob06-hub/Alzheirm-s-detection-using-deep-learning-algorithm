@@ -1,0 +1,181 @@
+{% load static %}
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>medico</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <!-- magnific popup CSS -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- nice select CSS -->
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <!--::header part start::-->
+  <header class="main_menu home_menu">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="/"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                        id="navbarSupportedContent">
+                        <ul class="navbar-nav align-items-center">
+                          <li class="nav-item active">
+                              <a class="nav-link" href="/hospital-dashboard">Home</a>
+                          </li>
+                         
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown"
+                                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Doctors
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="/hospital-adddoctor">Add</a>
+                                  <a class="dropdown-item" href="/hospital-viewdoctors">View</a>                                </div>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/hospital-viewprofile">Profile</a>
+                          </li>
+                          
+                          <li class="nav-item">
+                              <a class="nav-link" href="/users-login">Logout</a>
+                          </li>
+                      </ul>
+                    </div>
+                    <!-- <a class="btn_2 d-none d-lg-block" href="#">HOT LINE- 09856</a> -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+  <!-- Header part end-->
+
+  <!-- breadcrumb start-->
+  {% block hospital %}
+  <section class="breadcrumb_part breadcrumb_bg " style="background-image: url(../static/img/5183184.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px; width: 100%; height: 500px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item" >               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <h3 style=" color: #17a2b8; font-size: 3rem; margin-bottom: 5px; text-align: center;">Hospital Dashboard</h3>
+
+  <!-- breadcrumb start-->
+
+  <!-- ================ contact section start ================= -->
+
+ 
+  {% endblock hospital %}
+  <!-- ================ contact section end ================= -->
+
+  <!-- footer part start-->
+  <footer class="footer-area mt-5">
+    <div class="footer section_padding">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-xl-2 col-md-4 col-sm-6 single-footer-widget">
+            <a href="#" class="footer_logo"> <img src="../static/img/logo.png" alt="#"> </a>
+            <p></p>
+            <div class="social_logo">
+              
+            </div>
+          </div>
+          <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Department</a></li>
+              <li><a href="#"> Online payment</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Department</a></li>
+            </ul>
+          </div>
+          <div class="col-xl-2 col-sm-6 col-md-4 single-footer-widget">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="#">In the community</a></li>
+              <li><a href="#">IU health foundation</a></li>
+              <li><a href="#">Family support </a></li>
+              <li><a href="#">Business solution</a></li>
+              <li><a href="#">Community clinic</a></li>
+            </ul>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright_part">
+      <div class="container">
+        <div class="row align-items-center">
+          <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">LCC</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- footer part end-->
+
+  <!-- jquery plugins here-->
+
+  <script src="js/jquery-1.12.1.min.js"></script>
+  <!-- popper js -->
+  <script src="js/popper.min.js"></script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- owl carousel js -->
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.nice-select.min.js"></script>
+  <!-- contact js -->
+  <script src="js/jquery.ajaxchimp.min.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+  <script src="js/mail-script.js"></script>
+  <script src="js/contact.js"></script>
+  <!-- custom js -->
+  <script src="js/custom.js"></script>
+</body>
+
+</html>

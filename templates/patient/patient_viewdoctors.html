@@ -1,0 +1,129 @@
+{% extends 'patient/patient_dashboard.html' %}
+{% for message in messages %}
+<script>alert('{{message}}')</script>
+{% endfor %}
+{% block patient %}
+
+<style>
+  body{
+    background-color: #f4f5f7;
+  }
+    .gradient-custom {
+/* fallback for old browsers */
+background: #1e263d;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right bottom, rgb(139, 132, 228), rgb(133, 145, 253))
+}
+</style>
+<section class="breadcrumb_part breadcrumb_bg " style="background-image: url(../static/img/5183184.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 70px; width: 100%; height: 500px;" >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="breadcrumb_iner">
+            <div class="breadcrumb_iner_item" >               
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <h3 style=" color: #17a2b8; font-size: 3rem; margin-bottom: 5px; text-align: center;">View Doctors</h3>
+
+  <!-- breadcrumb start-->
+  <br>
+<div class="container">
+    <div class="row">
+        <form action="" method="post">
+            {% csrf_token %}
+            <select  aria-label=".form-select-lg example" name="department" style="    color: #6c757d;
+            font-size: 16px;
+            border: none;
+            border: 1px solid #ddd;
+            width: 260px;
+            height: 35px;
+            border-radius: 4px;
+            outline: none;">
+                <option selected disabled>Choose department</option>
+                {% for department in departments %}
+                <option value="{{department.id}}">{{department.department_name}}</option>
+                {% endfor %}
+                </select>
+                <button type="submit" class="button button-contactForm btn_1" style="border-radius: 5px; height: 40px;">Filter</button>&nbsp;&nbsp;
+                <a href="/patient-viewdoctors?hospitalid={{hospital}}" class="button button-contactForm btn_1" style="border-radius: 5px; height: 40px;">All</a>
+
+            </form>    
+    </div>
+</div>
+  <!-- ================ contact section start ================= -->
+  {% for doctor in doctors %}
+
+  <section class="" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+          
+            <div class="row g-0">
+              <div class="col-md-4 gradient-custom text-center text-white"
+                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img src="../../static/media/{{doctor.image}}"
+                  alt="Avatar" class="img-fluid my-5" style="width: 100px;" />
+                <h5>{{doctor.fname}} {{doctor.lname}}, {{doctor.highest_quali}}</h5>
+                <p>{{doctor.department.department_name}}</p>
+                <i class="far fa-edit mb-5"></i>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h6>Information</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-12 mb-3">
+                      <h6>Email</h6>
+                      <p class="text-muted">{{doctor.email}}</p>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <h6>Phone</h6>
+                      <p class="text-muted">{{doctor.phone}}</p>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <h6>Address</h6>
+                        <p class="text-muted">{{doctor.doctor_address}}</p>
+                      </div>
+                      <div class="col-12 mb-3">
+                        <h6>Consultation time</h6>
+                        <p class="text-muted">{{doctor.time_from}} - {{doctor.time_to}}</p>
+                      </div>
+                      <div class="col-12 mb-3">
+                        <h6>Consultation fee</h6>
+                        <p class="text-muted">{{doctor.fee}} Rs.</p>
+                      </div>
+                  </div>
+                  <h6>Action</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                   
+                    <div class="col-4 mb-3">
+                        <p class="text-muted"><a href="/patient-makeappointment?docid={{doctor.id}}" class="button button-contactForm btn_1" style="border-radius: 5px; margin-left: 39%;">Appointment</a></p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+
+{% endblock patient %}

@@ -1,0 +1,140 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey", "Good morning", "Is anyone there?"],
+      "responses": [
+        "Hello! I can help you with Alzheimer’s disease prediction and symptoms.",
+        "Hi there! How can I assist you regarding memory or cognitive health today?"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you later"],
+      "responses": [
+        "Take care! Stay healthy.",
+        "Goodbye! Feel free to return if you need help."
+      ]
+    },
+    {
+      "tag": "alzheimers_info",
+      "patterns": [
+        "What is Alzheimer's?",
+        "Tell me about Alzheimer's disease",
+        "Explain Alzheimer's",
+        "What causes memory loss disease?"
+      ],
+      "responses": [
+        "Alzheimer’s disease is a progressive neurological disorder that causes memory loss and cognitive decline.",
+        "It affects brain cells and leads to problems with memory, thinking, and behavior over time."
+      ]
+    },
+    {
+      "tag": "symptoms",
+      "patterns": [
+        "What are the symptoms of Alzheimer's?",
+        "Signs of memory loss",
+        "How to know if someone has Alzheimer's?",
+        "Early symptoms of dementia"
+      ],
+      "responses": [
+        "Common symptoms include memory loss, confusion, difficulty in problem-solving, and changes in mood or behavior.",
+        "Early signs include forgetting recent events, trouble finding words, and misplacing things frequently."
+      ]
+    },
+    {
+      "tag": "prediction",
+      "patterns": [
+        "Can you predict Alzheimer's?",
+        "How to detect Alzheimer's early?",
+        "Is there a test for Alzheimer's?",
+        "How does AI detect Alzheimer's?"
+      ],
+      "responses": [
+        "Alzheimer’s can be predicted using medical imaging like MRI scans and machine learning models.",
+        "Deep learning models analyze brain scans and cognitive test data to identify early signs of Alzheimer’s."
+      ]
+    },
+    {
+      "tag": "risk_factors",
+      "patterns": [
+        "Who is at risk of Alzheimer's?",
+        "Risk factors of Alzheimer's disease",
+        "Does age affect Alzheimer's?",
+        "Can genetics cause Alzheimer's?"
+      ],
+      "responses": [
+        "Age is the biggest risk factor, especially above 65 years.",
+        "Genetics, lifestyle, and health conditions like diabetes and hypertension can increase risk."
+      ]
+    },
+    {
+      "tag": "prevention",
+      "patterns": [
+        "How to prevent Alzheimer's?",
+        "Ways to reduce memory loss",
+        "Can Alzheimer's be avoided?",
+        "How to keep brain healthy?"
+      ],
+      "responses": [
+        "Regular exercise, a healthy diet, mental stimulation, and social activity can help reduce risk.",
+        "Maintaining good heart health and staying mentally active are key preventive measures."
+      ]
+    },
+    {
+      "tag": "diagnosis",
+      "patterns": [
+        "How is Alzheimer's diagnosed?",
+        "What tests are used?",
+        "Brain scan for Alzheimer's",
+        "Doctor diagnosis for dementia"
+      ],
+      "responses": [
+        "Doctors use cognitive tests, MRI scans, and medical history to diagnose Alzheimer’s.",
+        "Advanced diagnosis may include deep learning analysis of brain imaging data."
+      ]
+    },
+    {
+      "tag": "treatment",
+      "patterns": [
+        "Is there a cure for Alzheimer's?",
+        "Treatment for Alzheimer's",
+        "Medicines for memory loss",
+        "Can Alzheimer's be cured?"
+      ],
+      "responses": [
+        "There is no cure yet, but medications can help manage symptoms.",
+        "Therapies and lifestyle changes can improve quality of life for patients."
+      ]
+    },
+    {
+      "tag": "emergency",
+      "patterns": [
+        "Severe memory loss",
+        "Patient is confused and lost",
+        "Sudden behavior change",
+        "Urgent help for memory patient"
+      ],
+      "responses": [
+        "Please consult a doctor immediately for proper medical evaluation.",
+        "Sudden changes may require urgent medical attention. Contact a healthcare professional."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thank you", "Thanks", "Helpful"],
+      "responses": [
+        "You're welcome!",
+        "Glad I could help!"
+      ]
+    },
+    {
+      "tag": "noanswer",
+      "patterns": [],
+      "responses": [
+        "I'm not sure I understand. Could you provide more details?",
+        "Please explain your concern related to Alzheimer's or memory issues."
+      ]
+    }
+  ]
+}
